@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security</title>
+    <link rel="stylesheet" href="stylish.css">
+</head>
+
+<body>
+    <div style="
+    display: grid; 
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+  ">
+
+    <div class="dashboard">
+        <br>
+        <div class="image-container">
+            <img src="images/security.png" alt="Image description" width="70px" height="70px">
+        </div>
+        <br>
+        <div>
+            <button id="goPAN" class="btn"><i class="animation"></i><h2>Start PAN</h2><i class="animation"></i>
+            </button>
+            <script>
+              document.getElementById("goPAN").addEventListener("click", function() {
+                window.location.href = "startPAN.html";
+              });
+            </script>
+        </div>
+        <br>
+        <br>
+        <div class="banner">
+        <button id="configure" class="btn"><i class="animation"></i><h2>Configure</h2><i class="animation"></i></button>
+        <script>
+          document.getElementById("configure").addEventListener("click", function() {
+            window.location.href = "configure.html";
+          });
+        </script>
+        </div>
+    <div class="spacer"></div>
+    <div class="image-container-1">
+        <button id="goback" class="button"><img src="images/power-button.png" alt="Image description" width="70px" height="70px"></button>
+        <script>
+            document.getElementById("goback").addEventListener("click", function() {
+              window.location.href = "ind.html";
+            });
+          </script>
+    </div>
+</div>
+    
+
+    <div style="
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+    ">
+
+      <h1 style="font-size: 2em; text-align: center;">SECURITY</h1>
+      <br>
+      <div style="
+        display: flex; 
+        justify-content: space-between;
+        width: 100%;
+        height: 95%;
+      ">
+        <div style="background-color:rgba(80, 167, 73, 0.5);  text-align: justify ; padding: 20px; width: 40%; border-radius: 50px;">
+            <br>
+            <h2 style="font-size: 2em;">Verified Devices</h2>
+            <ul style="padding-left: 20px;">
+                <h2>Device 1</h2>
+                <h2>Device 2</h2>
+                <h2>Device 3</h2>
+                <h2>Device 4</h2>
+                <h2>Device 5</h2>
+                <h2>Device 6</h2>
+                <h2>Device 7</h2>
+                <h2>Device 8</h2>
+                <h2>Device 9</h2>
+                <h2>Device 10</h2>
+                <h2>Device 11</h2>
+            </ul> 
+        </div>
+
+        <div style="
+          display: flex; 
+          flex-direction: column; 
+          gap: 5%;
+          width: 55%">
+
+          <div style="background-color: rgba(80, 167, 73, 0.5); padding: 20px; width: 85%; border-radius: 50px; height: 60%;">
+            <canvas id="animatedGraph" width="400" height="300"></canvas>
+            <script>
+              const canvas = document.getElementById('animatedGraph');
+              const ctx = canvas.getContext('2d');
+          
+              const width = canvas.width;
+              const height = canvas.height;
+              const xStart = 40; // Offset for the x-axis (with room for y-axis label)
+              const xEnd = width - 20; // End point of the x-axis
+              const yStart = height - 40; // Start point for the y-axis (with room for x-axis label)
+              const yEnd = 20; // End point for the y-axis
+          
+              // Variables for triangle wave
+              const amplitude = (yStart - yEnd) / 2;
+              let currentX = xStart;
+              let currentY = yStart;
+              let direction = -1; // Initial direction of the wave (upwards)
+              const speed = 4; // Speed of wave animation
+          
+              function drawAxes() {
+                ctx.clearRect(0, 0, width, height); // Clear the canvas
+                ctx.beginPath();
+                ctx.moveTo(xStart, yStart);
+                ctx.lineTo(xEnd, yStart);
+                ctx.moveTo(xStart, yStart);
+                ctx.lineTo(xStart, yEnd);
+                ctx.strokeStyle = 'black';
+                ctx.stroke();
+          
+                // Label the x-axis as "Payload"
+                ctx.fillStyle = 'black';
+                ctx.font = '14px Arial';
+                ctx.fillText('Payload', (xStart + xEnd) / 2, height - 10);
+          
+                // Label the y-axis as "Time"
+                ctx.save();
+                ctx.translate(10, (yStart + yEnd) / 2);
+                ctx.rotate(-Math.PI / 2);
+                ctx.fillText('Time', 0, 0);
+                ctx.restore();
+              }
+          
+              function drawWave() {
+                ctx.beginPath();
+                ctx.moveTo(xStart, yStart);
+          
+                while (currentX <= xEnd) {
+                  ctx.lineTo(currentX, currentY);
+          
+                  // Update positions
+                  currentX += speed;
+                  currentY += speed * direction;
+          
+                  // Reverse direction at bounds
+                  if (currentY <= yEnd || currentY >= yStart) {
+                    direction *= -1;
+                  }
+                }
+          
+                ctx.strokeStyle = 'blue';
+                ctx.stroke();
+          
+                if (currentX > xEnd) {
+                  currentX = xStart; // Reset for loop
+                  currentY = yStart; // Start from base line
+                  direction = -1;
+                }
+              }
+          
+              function animate() {
+                drawAxes(); // Redraw the axes
+                drawWave(); // Redraw the wave
+                requestAnimationFrame(animate); // Loop the animation
+              }
+          
+              animate(); // Start the animation
+            </script>
+          </div>
+        
+          <div style="background-color: rgba(80, 167, 73, 0.5); padding: 20px; width: 85%; border-radius: 50px; height: 30% ">
+            <h2 style="font-size: 2em;">Unverified Devices</h2>
+            <ul style="padding-left: 20px;">
+                <h2>Device 1</h2>
+                <h2>Device 2</h2>
+                <h2>Device 3</h2>
+            </ul> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <center>
+    <button class="button"> ON</button> <br> <br>
+    <button class="button"> OFF</button>
+  </center>
+</body>  

@@ -1,0 +1,261 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
+
+
+body {
+    font-family: "Quicksand", sans-serif;
+    display:contents;
+    margin: 0;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: contain;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+   h1{
+      font-size: 2em;
+      letter-spacing: 15px;
+      margin: 0; 
+      text-align: center;
+      color: #006F1F;
+  }
+
+  .dashboard {
+    width: 200px;
+    background-color: #002107;
+    padding-top: 50px;
+    height: 94.2%;
+    border-radius: 0px 50px 50px 0px;
+  }
+  
+  .image-container {
+    top: 50%; 
+    left: 50%; 
+    transform: translate(50px, -20px); 
+    display: flex; 
+    justify-content: center;  
+    align-items: center; 
+    width: 90px; 
+    height: 90px; 
+    border-radius: 50%; 
+    background-color: #A5FFA4; 
+  }
+
+  .image-container img{
+    max-width: auto; 
+    max-height: auto;
+    margin: 0 auto;
+    height: auto;
+  } 
+
+  .image-container {
+    /* Animation properties */
+    animation: randomColor 1s infinite;
+  }
+  
+h1, label {
+    margin: 0;
+}
+  /* @keyframes randomColor {
+    0% { background-color: red; }
+    14% { background-color: orange; } 
+    28% { background-color: yellow; } 
+    42% { background-color: green; } 
+    57% { background-color: blue; } 
+    71% { background-color: indigo; } 
+    85% { background-color: violet; } 
+    100% { background-color: red; } 
+  }  */
+
+  .image-container-1 {
+    top: 50%; 
+    left: 50%; 
+    transform: translate(50px, -20px); 
+    display: flex; 
+    justify-content: center;  
+    align-items: center; 
+    width: 90px; 
+    margin: 0;
+    height: 90px; 
+    border-radius: 50%; 
+    background-color: #A5FFA4; 
+  }
+
+  .image-container-1 img{
+    max-width: auto; 
+    max-height: auto;
+    margin: 0;
+    height: auto;
+  } 
+
+
+  .content {
+    background-color: #54A753;
+    flex: 1;
+  }
+
+  h2 {
+    font-size: 15px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+  }
+   
+  ul {
+    list-style: none;
+    padding: 0;
+      
+  }
+
+  .button {
+    border-radius: 50%;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+    border-color: transparent;
+  }
+
+  .spacer {
+    height: 220px;
+    margin: 10px 0; 
+  }
+  
+  .btn {
+    outline: 0;
+    display: inline-flex;
+    align-items: center;
+    font-family: "Quicksand-semibold", sans-serif;
+    justify-content: space-between;
+    background: #73BC61;
+    min-width: 200px;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    padding: 5px 5px;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0px 30px 30px 0px;
+  }
+  
+  .btn:hover {
+    opacity: .95;
+  }
+  
+  .btn .animation {
+    border-radius: 100%;
+    animation: ripple 0.6s linear infinite;
+  }
+  
+  @keyframes ripple {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+    }
+  
+    100% {
+      box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+    }
+  }
+  
+  .row {
+    display: flex;               
+    align-items: center;
+    justify-content: space-between; 
+    align-items: center;         
+    padding: 10px;               
+  }
+  
+  span {
+    font-size: 20px;    
+    font-family: "Quicksand-semibold", sans-serif;
+  }
+  
+  /* Styling for the toggle switch */
+  .toggle-switch {
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+    width: 35px;                
+    height: 20px;       
+    vertical-align: bottom;        
+  }
+  
+  .toggle-switch input {
+    opacity: 0;                  /* Hide the checkbox */
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;     /* Default color */
+    transition: 0.4s;           /* Smooth transition */
+  }
+  
+  .slider.round {
+    border-radius: 34px;        /* Rounded corners for the switch */
+  }
+  
+  .slider.round:before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: white;
+    top: 3px;                    /* Center vertically */
+    left: 3px;                   /* Initial position */
+    transition: 0.4s;
+  }
+  
+  
+  .toggle-switch input:checked + .slider {
+    background-color: #2196F3;  /* Change color when ON */
+  }
+  
+  .toggle-switch input:checked + .slider:before {
+    transform: translateX(14px); /* Move the knob to the right */
+  }
+  
+/* Invisible layout*/
+
+details {
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  padding: 10px;
+  display: none;
+}
+
+.hidden {
+  display: none; /* Hide when not visible */
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between; /* Aligns text and elements on opposite ends */
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd; /* Optional: separate rows with a line */
+}
+
+.eye-icon {
+  display: inline-block;
+  background: url('eye-icon.png') no-repeat center; /* Replace with actual eye icon */
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.eye-icon:hover {
+  opacity: 0.7; /* Optional: hover effect for the eye icon */
+}

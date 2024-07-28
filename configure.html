@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <br><br><br>
+  <center>
+    <button id="on">ON</button>
+    <button id="off">OFF</button>
+  </center>
+    <div style="
+    display: grid; 
+    grid-template-columns: auto 1fr;
+    gap: 20px; 
+  ">
+
+<div class="dashboard", style="padding-bottom: 10px;">
+  <br>
+  <div class="image-container">
+      <img src="images/security.png" alt="Image description" width="70px" height="70px">
+  </div>
+  <br>
+  <div>
+      <button id="goPAN" class="btn"><i class="animation"></i><h2>Start PAN</h2><i class="animation"></i>
+      </button>
+      <script>
+        document.getElementById("goPAN").addEventListener("click", function() {
+          window.location.href = "startPAN.html";
+        });
+      </script>
+  </div>
+  <br>
+  <br>
+  <div class="banner">
+  <button id="configure" class="btn"><i class="animation"></i><h2>Configure</h2><i class="animation"></i></button>
+  <script>
+    document.getElementById("configure").addEventListener("click", function() {
+      window.location.href = "configure.html";
+    });
+  </script>
+  </div>
+<div class="spacer"></div>
+<div class="image-container-1">
+  <button id="goback" class="button"><img src="images/power-button.png" alt="Image description" width="70px" height="70px"></button>
+  <script>
+      document.getElementById("goback").addEventListener("click", function() {
+        window.location.href = "ind.html";
+      });
+    </script>
+</div>
+</div>
+
+<div style="
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+    ">
+
+      <h1 style="font-size: 2em; text-align: center;">SECURITY</h1>
+      <br>
+      <div style="
+        display: flex; 
+        justify-content: space-between;
+        width: 90%;
+        height: 90%;
+      ">
+        <div class ="header-label-container"style="background-color:rgba(80, 167, 73, 0.5); padding: 20px; width: 90%; border-radius: 50px;">
+          
+          <div class="container">
+            <!-- Table with Devices title and Add button -->
+            <div class="table-section">
+              <div class="table-title">
+                <span>Devices</span>
+                <button class="add-button" onclick="openModal('addDevice')">+</button> <!-- Button on the right -->
+              </div>
+              <div class="scrollable-table" id="devices-table">
+                <table>
+                  <!-- Initially empty, rows will be added dynamically -->
+                </table>
+              </div>
+            </div>
+          
+            <!-- Table with Fog Node title and Add button -->
+            <div class="table-section">
+              <div class="table-title">
+                <span>Fog Nodes</span>
+                <button class="add-button" onclick="openModal('addFogNode')">+</button> <!-- Button on the right -->
+              </div>
+              <div class="scrollable-table" id="fog-node-table">
+                <table>
+                  <!-- Initially empty, rows will be added dynamically -->
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Modal for adding new entries -->
+          <div class="modal hidden" id="modal">
+            <div class="modal-content">
+              <span class="close-button" onclick="closeModal()">&times;</span> <!-- Close button -->
+              <h2 id="modal-title">Add Device</h2> <!-- Title of the modal -->
+              <div class="modal-line">
+                <span>Device Name:</span>
+                <input type="text" id="device-name" class="input-field"> <!-- Transparent text field -->
+              </div>
+              <div class="modal-line">
+                <span>Device Mac-Add:</span>
+                <input type="text" id="device-mac" class="input-field"> <!-- Transparent text field -->
+              </div>
+              <div class="modal-line" id="additional-line" class="hidden">
+                <span>Fog Node Con:</span>
+                <input type="text" id="fog-node-con" class="input-field">
+              </div>
+              <button class="save-button" onclick="saveData()">Save</button> <!-- Save button in the middle -->
+            </div>
+          </div>
+          
+          <script src="confScript.js">
+          function openModal(modalType) {
+            const modal = document.getElementById("modal");
+            modal.classList.remove("hidden"); // Show the modal
+          
+            const modalTitle = document.getElementById("modal-title");
+            const additionalLine = document.getElementById("additional-line");
+          
+            if (modalType === "addDevice") {
+              modalTitle.textContent = "Add Device";
+              additionalLine.classList.remove("hidden");
+            } else if (modalType === "addFogNode") {
+              modalTitle.textContent = "Add Fog Node";
+              additionalLine.classList.add("hidden");
+            }
+          }
+          
+          function saveData() {
+            const modal = document.getElementById("modal");
+            const deviceName = document.getElementById("device-name").value; // Get the device name
+            const deviceMac = document.getElementById("device-mac").value; // Get the device MAC address
+            const fogNodeCon = document.getElementById("fog-node-con").value; // Get the fog node connection
+          
+            if (document.getElementById("modal-title").textContent === "Add Device") {
+              addRow("devices-table", deviceName);
+            } else {
+              addRow("fog-node-table", deviceName);
+            }
+          
+            modal.classList.add("hidden"); // Hide the modal after saving
+          }
+          
+          function addRow(tableId, content) {
+            const table = document.getElementById(tableId).querySelector("table");
+            const row = document.createElement("tr");
+          
+            const cellText = document.createElement("td");
+            cellText.textContent = content;
+            cellText.classList.add("left-align"); // Text aligned left
+          
+            const cellRemove = document.createElement("td");
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "-";
+            removeButton.className = "remove-button";
+            removeButton.addEventListener("click", () => table.removeChild(row)); // Remove row on click
+            cellRemove.appendChild(removeButton);
+            cellRemove.classList.add("right-align"); // "-" button aligned right
+          
+            row.appendChild(cellText); // Add text to the row
+            row.appendChild(cellRemove); // Add the "-" button to the row
+          
+            table.appendChild(row); // Append row to the table
+          }
+          
+          function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.classList.add("hidden"); // Hide the modal
+          }
+          </script> 
+</body>  

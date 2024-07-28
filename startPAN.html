@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security</title>
+    <link rel="stylesheet" href="stylish.css">
+</head>
+
+<body>
+    <div style="
+    display: grid; 
+    grid-template-columns: auto 1fr;
+    gap: 20px; 
+  ">
+
+<div class="dashboard", style="padding-bottom: 10px;">
+  <br>
+  <div class="image-container">
+      <img src="images/security.png" alt="Image description" width="70px" height="70px">
+  </div>
+  <br>
+  <div>
+      <button id="goPAN" class="btn"><i class="animation"></i><h2>Start PAN</h2><i class="animation"></i>
+      </button>
+      <script>
+        document.getElementById("goPAN").addEventListener("click", function() {
+          window.location.href = "startPAN.html";
+        });
+      </script>
+  </div>
+  <br>
+  <br>
+  <div class="banner">
+  <button id="configure" class="btn"><i class="animation"></i><h2>Configure</h2><i class="animation"></i></button>
+  <script>
+    document.getElementById("configure").addEventListener("click", function() {
+      window.location.href = "configure.html";
+    });
+  </script>
+  </div>
+<div class="spacer"></div>
+<div class="image-container-1">
+  <button id="goback" class="button"><img src="images/power-button.png" alt="Image description" width="70px" height="70px"></button>
+  <script>
+      document.getElementById("goback").addEventListener("click", function() {
+        window.location.href = "ind.html";
+      });
+    </script>
+</div>
+</div>
+
+<div style="
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+    ">
+
+      <h1 style="font-size: 2em; text-align: center;">SECURITY</h1>
+      <br>
+      <div style="
+        display: flex; 
+        justify-content: space-between;
+        width: 90%;
+        height: 90%;
+      ">
+        <div class ="header-label-container"style="background-color:rgba(80, 167, 73, 0.5); padding: 20px; width: 90%; border-radius: 50px;">
+            <div class="row">
+              <h2 style="font-size: 1.5em;">HOST PAN NETWORK</h2> 
+              <label class="toggle-switch">
+              <input type="checkbox" id="toggle-switch" onclick="toggleContainer()">
+              <span class="slider round"></span>
+              </label>  
+          </div> 
+          <!-- Secondary container, initially hidden -->
+<div id="details-container" class="details hidden">
+  <div class="row">
+    <span>Network name</span>
+    <span>Home IDS</span>
+  </div>
+  <div class="row">
+    <span>Password</span>
+    <!--work-->
+    <span>*****</span>
+    <!---->
+  </div>
+  <div class="row">
+    <span>Encryption</span>
+    <span>AES-CCM</span>
+  </div>
+  <div class="row">
+    <span>MAC Address</span>
+    <span id="mac-address">00:14:22:01:23:45</span>
+  </div>
+</div>
+
+<script>
+function toggleContainer() {
+  var checkbox = document.getElementById("toggle-switch");
+  var container = document.getElementById("details-container");
+  container.classList.toggle("hidden", !checkbox.checked); 
+}
+
+function togglePasswordVisibility() {
+  var passwordField = document.getElementById("password-field");
+  if (passwordField.type === "password") {
+    passwordField.type = "text"; // Show password
+  } else {
+    passwordField.type = "password"; // Hide password
+  }
+}
+</script>
+      </div>
+    </div>
+  </div>
+</body>  
